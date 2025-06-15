@@ -1,5 +1,5 @@
-# Document Automation Project
+# Приложение для автоматизации заполнения документов
 
-## Creating a system for automatic filling of student ID cards to replace manual data entry during document processing.
+## создание системы позволяющее создавать pdf документы по типу студенческих билетво или зачеток опираясь на данные полученные из БД
 
-### Currently, educational institution staff manually fill in student data into student ID card templates, which takes time and increases the risk of errors.
+### nothing
