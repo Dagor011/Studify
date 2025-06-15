@@ -1,0 +1,12 @@
+# MacOS Files
+.DS_Store
+
+# IDE-specific files
+.vscode/
+*.user
+
+# CMake files
+/build/
+
+# SQL file
+dataBase.txt
