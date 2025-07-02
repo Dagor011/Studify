@@ -14,8 +14,8 @@ PdfGenerator::PdfGenerator(QObject *parent) :
 void PdfGenerator::generatePdf(const QString &filename, const std::vector<Student> &students)
 {
     QPdfWriter writer(filename);
-    writer.setPageSize(QPageSize::A4);                            // Формат А4
-    writer.setResolution(72);                                     // Разрешение 72 dpi
+    writer.setPageSize(QPageSize::A4);                            // Формат 
+    writer.setResolution(72);                                     // Разрешение 
 
     QPainter painter(&writer);
     painter.setPen(Qt::black);
@@ -49,7 +49,7 @@ void PdfGenerator::generatePdf(const QString &filename, const std::vector<Studen
             yPosition = 150;
         }
 
-        // Заголовочная информация
+       
         QString topLine = "АВТОНОМНАЯ НЕКОММЕРЧЕСКАЯ ОРГАНИЗАЦИЯ";
         QString middleLine = "ПРОФЕССИОНАЛЬНАЯ ОБРАЗОВАТЕЛЬНАЯ ОРГАНИЗАЦИЯ";
         QString bottomLine = "МОСКОВСКИЙ МЕЖДУНАРОДНЫЙ КОЛЛЕДЖ ЦИФРОВЫХ ТЕХНОЛОГИЙ \"АКАДЕМИЯ ТОП\"";
@@ -67,65 +67,65 @@ void PdfGenerator::generatePdf(const QString &filename, const std::vector<Studen
 
         yPosition += 20;
 
-        // Поле с информацией о студенте
+      
         qreal textStartX = 100;
         QRectF contentRect(textStartX, yPosition, halfPageWidth, boldHeadingsMetrics.height());
 
-        // Устанавливаем шрифт для основного текста
+     
         painter.setFont(boldBodyFont);
-        painter.drawText(contentRect.topLeft(), "Студентский билет №");              // Название поля
+        painter.drawText(contentRect.topLeft(), "Студентский билет №");             
         painter.drawLine(contentRect.topLeft().x(), contentRect.topLeft().y() + smallBodyFontMetrics.ascent(),
-                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + smallBodyFontMetrics.ascent());  // Линия под номером билета
+                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + smallBodyFontMetrics.ascent());  
 
         contentRect.setHeight(smallBodyFontMetrics.height());
         painter.setFont(smallBodyFont);
-        painter.drawText(contentRect.topLeft() + QPointF(60, 0), student.getTicketNumber()); // Значение поля
+        painter.drawText(contentRect.topLeft() + QPointF(60, 0), student.getTicketNumber()); 
 
-        // Остальная информация о студенте
-        painter.drawText(contentRect.topLeft() + QPointF(0, 15), "Фамилия ");           // Название поля
+      
+        painter.drawText(contentRect.topLeft() + QPointF(0, 15), "Фамилия ");          
         painter.drawLine(contentRect.topLeft().x(), contentRect.topLeft().y() + 15 + smallBodyFontMetrics.ascent(),
-                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 15 + smallBodyFontMetrics.ascent()); // Линия под фамилией
-        painter.drawText(contentRect.topLeft() + QPointF(60, 15), student.getLastName());  // Значение поля
+                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 15 + smallBodyFontMetrics.ascent()); 
+        painter.drawText(contentRect.topLeft() + QPointF(60, 15), student.getLastName());  
 
-        painter.drawText(contentRect.topLeft() + QPointF(0, 30), "Имя ");               // Название поля
+        painter.drawText(contentRect.topLeft() + QPointF(0, 30), "Имя ");               
         painter.drawLine(contentRect.topLeft().x(), contentRect.topLeft().y() + 30 + smallBodyFontMetrics.ascent(),
-                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 30 + smallBodyFontMetrics.ascent()); // Линия под именем
-        painter.drawText(contentRect.topLeft() + QPointF(60, 30), student.getFirstName());  // Значение поля
+                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 30 + smallBodyFontMetrics.ascent()); 
+        painter.drawText(contentRect.topLeft() + QPointF(60, 30), student.getFirstName());  
 
-        painter.drawText(contentRect.topLeft() + QPointF(0, 45), "Отчество ");          // Название поля
+        painter.drawText(contentRect.topLeft() + QPointF(0, 45), "Отчество ");          
         painter.drawLine(contentRect.topLeft().x(), contentRect.topLeft().y() + 45 + smallBodyFontMetrics.ascent(),
-                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 45 + smallBodyFontMetrics.ascent()); // Линия под отчеством
-        painter.drawText(contentRect.topLeft() + QPointF(60, 45), student.getMiddleName());  // Значение поля
+                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 45 + smallBodyFontMetrics.ascent()); 
+        painter.drawText(contentRect.topLeft() + QPointF(60, 45), student.getMiddleName());  
 
-        painter.drawText(contentRect.topLeft() + QPointF(0, 60), QString("Форма обучения ")); // Название поля
+        painter.drawText(contentRect.topLeft() + QPointF(0, 60), QString("Форма обучения ")); 
         painter.drawLine(contentRect.topLeft().x(), contentRect.topLeft().y() + 60 + smallBodyFontMetrics.ascent(),
-                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 60 + smallBodyFontMetrics.ascent()); // Линия под формой обучения
-        painter.drawText(contentRect.topLeft() + QPointF(60, 60), student.getFormOfStudy());  // Значение поля
+                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 60 + smallBodyFontMetrics.ascent()); 
+        painter.drawText(contentRect.topLeft() + QPointF(60, 60), student.getFormOfStudy());  
 
-        painter.drawText(contentRect.topLeft() + QPointF(0, 75), "Зачислен приказом ");     // Название поля
+        painter.drawText(contentRect.topLeft() + QPointF(0, 75), "Зачислен приказом ");    
         painter.drawLine(contentRect.topLeft().x(), contentRect.topLeft().y() + 75 + smallBodyFontMetrics.ascent(),
-                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 75 + smallBodyFontMetrics.ascent()); // Линия под приказом
-        painter.drawText(contentRect.topLeft() + QPointF(60, 75), student.getOrderDate() + " №" + student.getOrderNumber());  // Значение поля
+                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 75 + smallBodyFontMetrics.ascent()); 
+        painter.drawText(contentRect.topLeft() + QPointF(60, 75), student.getOrderDate() + " №" + student.getOrderNumber()); 
 
-        painter.drawText(contentRect.topLeft() + QPointF(0, 90), "Дата выдачи ");          // Название поля
+        painter.drawText(contentRect.topLeft() + QPointF(0, 90), "Дата выдачи ");         
         painter.drawLine(contentRect.topLeft().x(), contentRect.topLeft().y() + 90 + smallBodyFontMetrics.ascent(),
-                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 90 + smallBodyFontMetrics.ascent()); // Линия под датой выдачи
-        painter.drawText(contentRect.topLeft() + QPointF(60, 90), student.getIssueDate());  // Значение поля
+                         contentRect.topLeft().x() + halfPageWidth / 2.2, contentRect.topLeft().y() + 90 + smallBodyFontMetrics.ascent()); 
+        painter.drawText(contentRect.topLeft() + QPointF(60, 90), student.getIssueDate());  
 
-        // Подписи оставляем пустыми, только линии под ними
+      
         yPosition += 120;
 
         painter.setFont(smallInfoFont);
         QRectF horizontalSignatureRect(textStartX, yPosition -= 120, halfPageWidth, smallInfoFontMetrics.height());
-        painter.drawText(horizontalSignatureRect.topLeft() + QPointF(0, 110), "Подпись студента:");  // Надпись "Подпись студента:"
+        painter.drawText(horizontalSignatureRect.topLeft() + QPointF(0, 110), "Подпись студента:");  
         painter.drawLine(horizontalSignatureRect.topLeft().x(), horizontalSignatureRect.topLeft().y() + 110,
-                         horizontalSignatureRect.topLeft().x() + halfPageWidth / 2.2, horizontalSignatureRect.topLeft().y() + 110);  // Линия под подписью студента
+                         horizontalSignatureRect.topLeft().x() + halfPageWidth / 2.2, horizontalSignatureRect.topLeft().y() + 110);  
 
         QRectF verticalDirectorRect(10, yPosition - 120, halfPageWidth, smallInfoFontMetrics.lineSpacing() * 6);
         QString directorText = "Руководитель организации,\nосуществляющей\nобразовательную\nдеятельность, или иное\nуполномоченное имя,\nдолжностное лицо";
-        painter.drawText(verticalDirectorRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, directorText);  // Надпись "Руководитель..."
+        painter.drawText(verticalDirectorRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, directorText);  
         painter.drawLine(verticalDirectorRect.topLeft().x(), verticalDirectorRect.bottomRight().y(),
-                         verticalDirectorRect.topLeft().x() + halfPageWidth / 2.2, verticalDirectorRect.bottomRight().y());  // Линия под надписью "Руководитель..."
+                         verticalDirectorRect.topLeft().x() + halfPageWidth / 2.2, verticalDirectorRect.bottomRight().y());  
 
         yPosition += 250;
     }
